@@ -5,7 +5,6 @@ import { ExchangerRoutingModule } from './exchanger-routing.module';
 import { ConverterComponent } from './components/converter/converter.component';
 import { CurrencyExchangerComponent } from './pages/currency-exchanger/currency-exchanger.component';
 import { CurrencyDetailsComponent } from './pages/currency-details/currency-details.component';
-import { SelectDropdownComponent } from 'app/shared/components/select-dropdown/select-dropdown.component';
 
 
 @NgModule({
@@ -13,8 +12,7 @@ import { SelectDropdownComponent } from 'app/shared/components/select-dropdown/s
   imports: [
     CommonModule,
     ExchangerRoutingModule,
-    ConverterComponent,
-    SelectDropdownComponent
+    ConverterComponent
   ]
 })
 export class ExchangerModule { }

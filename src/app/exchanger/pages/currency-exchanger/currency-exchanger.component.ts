@@ -8,12 +8,28 @@ import { ConverterService } from '@exchanger/services/converter.service';
   templateUrl: './currency-exchanger.component.html',
   styleUrl: './currency-exchanger.component.scss'
 })
-export class CurrencyExchangerComponent  {
-  constructor(private converterService: ConverterService) {}
+export class CurrencyExchangerComponent implements OnInit {
+  amount: number = 0
+  currenciesValues: any[] = []
+  constructor(private converterApiService: ConverterApiService , private converterService: ConverterService) {}
+  ngOnInit(): void {
+    if(!localStorage.getItem('rates')) {
+      this.getLatestRates()
+    }
+  }
 
+  getLatestRates() {
+    this.converterApiService.latestRates().subscribe((response:any) => {
+      console.log(response['rates']);
+      localStorage.setItem("rates", JSON.stringify(response['rates']))
+      localStorage.setItem("currencies", JSON.stringify(Object.keys(response['rates'])))
+    })
+  }
 
   onConvert(event:ConverterItem) {
 
-    this.converterService.calculateAmount(event)
+    this.amount = this.converterService.calculateAmount(event)
+    this.currenciesValues = this.converterService.calculateOtherCurrencies(event)
+
   }
 }

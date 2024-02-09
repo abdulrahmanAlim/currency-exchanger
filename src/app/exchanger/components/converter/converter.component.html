@@ -6,7 +6,32 @@
         <div class="column">
           <label>Amount</label>
           <input class="input" type="number" [(ngModel)]="amount">
-          <div class="info-small align-center">1.00 {{converterItem.from}} = XX.XX {{converterItem.to}}</div>
+          <div class="info-small align-center">{{values.fromValue}} {{converterItem.from}} = {{values.toValue}} {{converterItem.to}}</div>
+        </div>
+      </div>
+     <!-- Right section -->
+      <div  class="col-2">
+        <div class="row space-between">
+          <div class="column">
+            <label>From</label>
+            <app-select-dropdown type="from" [items]="currenciesList" [defaultValues]="converterItem" (updatedValues)="onUpdateSelection($event)" (selectedItem)="onSelectItem($event , 'from')"></app-select-dropdown>
+          </div>
+          <button class="btn" (click)="swapCurrencies()">Swap</button>
+          <div class="column">
+            <label>To</label>
+            <app-select-dropdown type="to" [items]="currenciesList" [defaultValues]="converterItem" (updatedValues)="onUpdateSelection($event)" (selectedItem)="onSelectItem($event , 'to')"></app-select-dropdown>
+          </div>
+        </div>
+        <div class="row space-around t-20">
+          <button class="btn btn-primary" (click)="convert()" >Convert</button>
+        </div>
+        <div class="row t-20 gap-10 align-center">
+          <div class="col-2">
+            <div class="info-large">{{exchangedAmount}} {{converterItem.to}}</div>
+          </div>
+          <div class="col-1">
+            <button class="btn btn-primary" (click)="convert()" >Details</button>
+          </div>
         </div>
       </div>
     </div>
