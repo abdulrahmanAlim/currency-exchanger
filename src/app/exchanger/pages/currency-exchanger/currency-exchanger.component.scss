@@ -1,0 +1,15 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.grid-item {
+  width: calc(30% - 10px);
+  margin: 5px;
+  height: 100px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

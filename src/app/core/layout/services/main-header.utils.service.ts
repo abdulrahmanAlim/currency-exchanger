@@ -10,8 +10,8 @@ export class MainHeaderUtilsService {
 
   constructor() {
     this.headerBtnsList = [
-      {label: "EUR-USD Details" , customCss: "details-btn" , url : 'details/EUR-USD'},
-      {label: "EUR-GBP Details" , customCss: "details-btn" , url : 'details/EUR-GBP'},
+      {label: "EUR-USD Details" , customCss: "details-btn" , url : 'exchanger/details/EUR-USD'},
+      {label: "EUR-GBP Details" , customCss: "details-btn" , url : 'exchanger/details/EUR-GBP'},
     ]
   }
 

@@ -9,7 +9,6 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { MainHeaderComponent } from './components/header/components/main-header/main-header.component';
 
 import { LogoComponent } from './components/header/components/logo/logo.component';
-import { LoaderService } from './services/loader.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Intercepter } from '../interceptors/interceptor';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -17,7 +16,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   providers: [
-
+    { provide: HTTP_INTERCEPTORS, useClass: Intercepter, multi: true },
   ],
   declarations: [
     HeaderComponent,
