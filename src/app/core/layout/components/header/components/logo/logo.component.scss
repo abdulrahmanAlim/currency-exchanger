@@ -1,0 +1,23 @@
+p {
+  font-weight: 600;
+  color: white;
+}
+img {
+  height: 3.469rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  img {
+    height: 3.575rem;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  div {
+    padding: 0px;
+  }
+  img {
+    height: 1.788rem;
+  }
+}

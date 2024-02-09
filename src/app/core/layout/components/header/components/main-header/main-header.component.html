@@ -1,0 +1,14 @@
+<nav>
+  <div class="container">
+    <div class="row space-between align-center">
+      <div class="row">
+        <app-logo></app-logo>
+      </div>
+      <div class="row gap-10 ">
+        <ng-container  *ngFor="let button of btnsList">
+          <button [class]="'btn '+ button.customCss"  (click)="routeTo(button.url)">{{button.label}}</button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nav>
