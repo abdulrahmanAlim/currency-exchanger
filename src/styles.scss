@@ -81,6 +81,14 @@ section {
   margin-top: 20px;
 }
 
+.b-10 {
+  margin-bottom: 10px;
+}
+
+.b-20 {
+  margin-bottom: 20px;
+}
+
 .m-20 {
   margin: 0px 20px 0px 20px;
 }
@@ -95,5 +103,12 @@ section {
 
 .gap-30 {
   gap: 30px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--light-blue-100);
+  color: white;
+  height: 30px;
 }
 

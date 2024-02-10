@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ConverterService {
   converterItem = new BehaviorSubject<ConverterItem>({
     amount: 0,
+    convertedAmount: 0,
     from: 'EUR',
     to: 'USD'
   })
@@ -52,13 +53,15 @@ export class ConverterService {
   }
 
    calculateAmount(convertItem: ConverterItem){
-    let amount = 0
+
+    let convertedAmount = 0
     const fromRate = this.ratesList[convertItem.from];
     const toRate = this.ratesList[convertItem.to];
     if (fromRate !== undefined && toRate !== undefined) {
-      amount = (convertItem.amount * toRate) / fromRate
-
-      return amount;
+      convertedAmount = (convertItem.amount * toRate) / fromRate
+      convertItem.convertedAmount =convertedAmount
+      this.converterItem.next(convertItem)
+      return convertedAmount;
     } else {
       return 0;
     }

@@ -13,8 +13,10 @@ import { ConverterItem } from '@exchanger/models/converter-item';
 export class SelectDropdownComponent {
   @Input() items: any
   @Input() type: any
+  @Input() disabled: boolean = false
   @Input() defaultValues: ConverterItem = {
     amount: 0,
+    convertedAmount:0,
     from: '',
     to: ''
   }

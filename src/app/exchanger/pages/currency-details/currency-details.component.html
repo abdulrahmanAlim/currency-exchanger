@@ -1,1 +1,9 @@
-<p>currency-details works!</p>
+<div class="container">
+  <div class="row space-between align-center">
+    <h2 class="col-1">{{currencyName}}</h2>
+    <div >
+      <button class="btn btn-primary" (click)="goBack()">Back to home</button>
+    </div>
+  </div>
+  <app-converter [isDetailsPage]="isDetailsPage" [converterItem]="converterItem" (convertEmitter)="onConvert($event)" ></app-converter>
+</div>

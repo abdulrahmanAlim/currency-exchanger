@@ -1,6 +1,6 @@
 <div class="container">
-  <h4>Currency Exchanger</h4>
-  <app-converter [exchangedAmount]="amount" (convertEmitter)="onConvert($event)" ></app-converter>
+  <h2>Currency Exchanger</h2>
+  <app-converter [converterItem]="converterItem" (convertEmitter)="onConvert($event)" ></app-converter>
   <div class="grid t-20" >
     <div class="grid-item" *ngFor="let currency of currenciesValues">{{currency.value}} {{currency.currency}}</div>
   </div>

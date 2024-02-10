@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConverterItem } from '@exchanger/models/converter-item';
 import { ConverterApiService } from '@exchanger/services/converter.api.service';
 import { ConverterService } from '@exchanger/services/converter.service';
+import { LogoComponent } from 'app/core/layout/components/header/components/logo/logo.component';
 
 @Component({
   selector: 'app-currency-exchanger',
@@ -9,7 +10,12 @@ import { ConverterService } from '@exchanger/services/converter.service';
   styleUrl: './currency-exchanger.component.scss'
 })
 export class CurrencyExchangerComponent implements OnInit {
-  amount: number = 0
+  converterItem: ConverterItem = {
+    amount: 0,
+    convertedAmount:0,
+    from: 'EUR',
+    to: 'USD'
+  }
   currenciesValues: any[] = []
   constructor(private converterApiService: ConverterApiService , private converterService: ConverterService) {}
   ngOnInit(): void {
@@ -27,8 +33,7 @@ export class CurrencyExchangerComponent implements OnInit {
   }
 
   onConvert(event:ConverterItem) {
-
-    this.amount = this.converterService.calculateAmount(event)
+    this.converterItem.convertedAmount = this.converterService.calculateAmount(event)
     this.currenciesValues = this.converterService.calculateOtherCurrencies(event)
 
   }

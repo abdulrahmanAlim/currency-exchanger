@@ -5,7 +5,7 @@
       <div  class="col-1">
         <div class="column">
           <label>Amount</label>
-          <input class="input" type="number" [(ngModel)]="amount">
+          <input class="input" type="number" [(ngModel)]="converterItem.amount">
           <div class="info-small align-center">{{values.fromValue}} {{converterItem.from}} = {{values.toValue}} {{converterItem.to}}</div>
         </div>
       </div>
@@ -14,9 +14,9 @@
         <div class="row space-between">
           <div class="column">
             <label>From</label>
-            <app-select-dropdown type="from" [items]="currenciesList" [defaultValues]="converterItem" (updatedValues)="onUpdateSelection($event)" (selectedItem)="onSelectItem($event , 'from')"></app-select-dropdown>
+            <app-select-dropdown [disabled]="isDetailsPage" type="from" [items]="currenciesList" [defaultValues]="converterItem" (updatedValues)="onUpdateSelection($event)" (selectedItem)="onSelectItem($event , 'from')"></app-select-dropdown>
           </div>
-          <button class="btn" (click)="swapCurrencies()">Swap</button>
+          <button *ngIf="!isDetailsPage" class="btn" (click)="swapCurrencies()">Swap</button>
           <div class="column">
             <label>To</label>
             <app-select-dropdown type="to" [items]="currenciesList" [defaultValues]="converterItem" (updatedValues)="onUpdateSelection($event)" (selectedItem)="onSelectItem($event , 'to')"></app-select-dropdown>
@@ -26,11 +26,11 @@
           <button class="btn btn-primary" (click)="convert()" >Convert</button>
         </div>
         <div class="row t-20 gap-10 align-center">
-          <div class="col-2">
-            <div class="info-large">{{exchangedAmount}} {{converterItem.to}}</div>
+          <div class="col-4">
+            <div class="info-large">{{converterItem.convertedAmount}} {{converterItem.to}}</div>
           </div>
-          <div class="col-1">
-            <button class="btn btn-primary" (click)="convert()" >Details</button>
+          <div *ngIf="!isDetailsPage" class="col-1">
+            <button class="btn btn-primary" (click)="route()" >Details</button>
           </div>
         </div>
       </div>

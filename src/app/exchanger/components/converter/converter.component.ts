@@ -1,40 +1,46 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConverterItem } from '@exchanger/models/converter-item';
 import { ConverterService } from '@exchanger/services/converter.service';
 import { SelectDropdownComponent } from '../select-dropdown/select-dropdown.component';
+import {  Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-converter',
   standalone: true,
-  imports: [SelectDropdownComponent , FormsModule],
+  imports: [CommonModule, SelectDropdownComponent , FormsModule],
   templateUrl: './converter.component.html',
   styleUrl: './converter.component.scss'
 })
 export class ConverterComponent implements OnInit {
   @Output()  convertEmitter = new EventEmitter<ConverterItem>()
-  @Input() exchangedAmount:number = 0
+  @Input() converterItem :ConverterItem = {
+    amount: 0,
+    convertedAmount: 0,
+    from: '',
+    to: ''
+  }
+  @Input() isDetailsPage: boolean = false
 
   amount:number = 0
-
-
-  converterItem: ConverterItem  = {
-    amount: 0,
-    from: 'EUR',
-    to: 'USD'
-  }
   values: any = {
     fromValue:1,
     toValue:0
   }
 
   currenciesList
-  constructor(private converter: ConverterService) {
+  constructor(private converter: ConverterService ,private router:Router) {
     this.currenciesList =  converter.currenciesList ? JSON.parse(converter.currenciesList) : null
   }
 
   ngOnInit(): void {
     this.values = this.converter.getCurrencyRate(this.converterItem)
+  }
+
+  ngOnChanges(changes:SimpleChange){
+    console.log(changes);
+
   }
 
   onUpdateSelection(updatedValues: any) {
@@ -70,7 +76,10 @@ export class ConverterComponent implements OnInit {
   }
 
   convert() {
-    this.converterItem.amount  = this.amount
     this.convertEmitter.emit(this.converterItem)
+  }
+
+  route() {
+    this.router.navigateByUrl(`exchanger/${this.converterItem.from}`)
   }
 }
