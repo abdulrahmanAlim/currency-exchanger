@@ -6,7 +6,7 @@
         <div class="column">
           <label>Amount</label>
           <input class="input" type="number" [(ngModel)]="converterItem.amount">
-          <div class="info-small align-center">{{values.fromValue}} {{converterItem.from}} = {{values.toValue}} {{converterItem.to}}</div>
+          <div class="info-small align-center">{{converterItem.fromRate| numberFormatting}} {{converterItem.from}} = {{converterItem.toRate | numberFormatting}} {{converterItem.to}}</div>
         </div>
       </div>
      <!-- Right section -->
@@ -27,7 +27,7 @@
         </div>
         <div class="row t-20 gap-10 align-center">
           <div class="col-4">
-            <div class="info-large">{{converterItem.convertedAmount}} {{converterItem.to}}</div>
+            <div class="info-large">{{converterItem.convertedAmount | numberFormatting}} {{converterItem.to}}</div>
           </div>
           <div *ngIf="!isDetailsPage" class="col-1">
             <button class="btn btn-primary" (click)="route()" >Details</button>

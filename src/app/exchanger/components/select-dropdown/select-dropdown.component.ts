@@ -16,9 +16,11 @@ export class SelectDropdownComponent {
   @Input() disabled: boolean = false
   @Input() defaultValues: ConverterItem = {
     amount: 0,
-    convertedAmount:0,
+    convertedAmount: 0,
     from: '',
-    to: ''
+    to: '',
+    fromRate: 0,
+    toRate: 0
   }
   @Output() selectedItem = new EventEmitter<any>();
   @Output() updatedValues = new EventEmitter<any>();
@@ -37,8 +39,6 @@ export class SelectDropdownComponent {
 
 
   onChange(event: any , type: string) {
-    console.log(event.target.value);
-
     this.selectedItem.emit(event.target.value)
     if(type == 'to') {
       this.defaultValues.to=  event.target.value

@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row space-between align-center">
-    <h2 class="col-1">{{currencyName}}</h2>
+    <h2 class="col-1">{{currencyItem['firstCurrency'] ?  (currencyItem['firstCurrency'] + ' > ' + currencyItem['secondCurrency']) : currencyItem['currency']}}</h2>
     <div >
       <button class="btn btn-primary" (click)="goBack()">Back to home</button>
     </div>
   </div>
-  <app-converter [isDetailsPage]="isDetailsPage" [converterItem]="converterItem" (convertEmitter)="onConvert($event)" ></app-converter>
+  <app-converter [isDetailsPage]="isDetailsPage" [converterItem]="converterItem" (convertEmitter)="onConvert($event)" (onUpdateEmitter)="onUpdate($event)" ></app-converter>
+  <app-dynamic-chart *ngIf="queryParams.length >3" [data]="chartData" chartType="line"></app-dynamic-chart>
 </div>

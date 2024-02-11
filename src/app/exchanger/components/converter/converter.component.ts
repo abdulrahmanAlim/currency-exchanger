@@ -5,21 +5,25 @@ import { ConverterService } from '@exchanger/services/converter.service';
 import { SelectDropdownComponent } from '../select-dropdown/select-dropdown.component';
 import {  Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NumberFormattingPipe } from '@exchanger/pipes/number-formatting.pipe';
 
 @Component({
   selector: 'app-converter',
   standalone: true,
-  imports: [CommonModule, SelectDropdownComponent , FormsModule],
+  imports: [CommonModule, SelectDropdownComponent , FormsModule , NumberFormattingPipe],
   templateUrl: './converter.component.html',
   styleUrl: './converter.component.scss'
 })
 export class ConverterComponent implements OnInit {
   @Output()  convertEmitter = new EventEmitter<ConverterItem>()
+  @Output()  onUpdateEmitter = new EventEmitter<boolean>(false)
   @Input() converterItem :ConverterItem = {
     amount: 0,
     convertedAmount: 0,
     from: '',
-    to: ''
+    to: '',
+    fromRate: 0,
+    toRate: 0
   }
   @Input() isDetailsPage: boolean = false
 
@@ -35,13 +39,9 @@ export class ConverterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.values = this.converter.getCurrencyRate(this.converterItem)
+    this.converter.updateRates(this.converterItem)
   }
 
-  ngOnChanges(changes:SimpleChange){
-    console.log(changes);
-
-  }
 
   onUpdateSelection(updatedValues: any) {
     if(updatedValues.type === 'from') {
@@ -49,9 +49,8 @@ export class ConverterComponent implements OnInit {
     } else {
       this.converterItem.to = updatedValues.value
     }
-
-    this.values = this.converter.getCurrencyRate(this.converterItem)
-
+    this.converter.updateRates(this.converterItem)
+    this.onUpdateEmitter.emit(true)
   }
 
   onSelectItem(currency: string , type: string) {
@@ -65,14 +64,14 @@ export class ConverterComponent implements OnInit {
       default:
         break;
     }
+    this.converter.updateRates(this.converterItem)
   }
 
   swapCurrencies() {
     const temp = this.converterItem.from;
     this.converterItem.from = this.converterItem.to;
     this.converterItem.to = temp;
-    this.values = this.converter.getCurrencyRate(this.converterItem)
-    this.converterItem = { ...this.converterItem}
+    this.converter.updateRates(this.converterItem)
   }
 
   convert() {

@@ -2,6 +2,6 @@
   <h2>Currency Exchanger</h2>
   <app-converter [converterItem]="converterItem" (convertEmitter)="onConvert($event)" ></app-converter>
   <div class="grid t-20" >
-    <div class="grid-item" *ngFor="let currency of currenciesValues">{{currency.value}} {{currency.currency}}</div>
+    <div class="grid-item" *ngFor="let currency of currenciesValues">{{currency.value | numberFormatting}} {{currency.currency}}</div>
   </div>
 </div>

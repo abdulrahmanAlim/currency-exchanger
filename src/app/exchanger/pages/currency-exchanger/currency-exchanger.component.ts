@@ -12,9 +12,11 @@ import { LogoComponent } from 'app/core/layout/components/header/components/logo
 export class CurrencyExchangerComponent implements OnInit {
   converterItem: ConverterItem = {
     amount: 0,
-    convertedAmount:0,
+    convertedAmount: 0,
     from: 'EUR',
-    to: 'USD'
+    to: 'USD',
+    fromRate: 0,
+    toRate: 0
   }
   currenciesValues: any[] = []
   constructor(private converterApiService: ConverterApiService , private converterService: ConverterService) {}
@@ -22,11 +24,13 @@ export class CurrencyExchangerComponent implements OnInit {
     if(!localStorage.getItem('rates')) {
       this.getLatestRates()
     }
+    this.converterService.converterItem.subscribe(item => {
+      this.converterItem = item
+    })
   }
 
   getLatestRates() {
     this.converterApiService.latestRates().subscribe((response:any) => {
-      console.log(response['rates']);
       localStorage.setItem("rates", JSON.stringify(response['rates']))
       localStorage.setItem("currencies", JSON.stringify(Object.keys(response['rates'])))
     })
@@ -35,6 +39,5 @@ export class CurrencyExchangerComponent implements OnInit {
   onConvert(event:ConverterItem) {
     this.converterItem.convertedAmount = this.converterService.calculateAmount(event)
     this.currenciesValues = this.converterService.calculateOtherCurrencies(event)
-
   }
 }

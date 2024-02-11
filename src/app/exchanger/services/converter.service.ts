@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ContentChild, Injectable } from '@angular/core';
 import { ConverterItem } from '@exchanger/models/converter-item';
 import { BehaviorSubject } from 'rxjs';
 
@@ -10,7 +10,9 @@ export class ConverterService {
     amount: 0,
     convertedAmount: 0,
     from: 'EUR',
-    to: 'USD'
+    to: 'USD',
+    fromRate: 1,
+    toRate: 0
   })
 
   specialCurrenciesList: any[] = []
@@ -75,6 +77,12 @@ export class ConverterService {
         currenciesWithValues.push({currency: currency , value : (converterItem.amount * currencyRate) / fromRate })
       }
       return currenciesWithValues
+   }
+
+   updateRates(converterItem: ConverterItem) {
+    converterItem.fromRate = this.getCurrencyRate(converterItem)?.fromValue ?? 0;
+    converterItem.toRate = this.getCurrencyRate(converterItem)?.toValue ?? 0;
+    this.converterItem.next({...converterItem})
    }
 
 

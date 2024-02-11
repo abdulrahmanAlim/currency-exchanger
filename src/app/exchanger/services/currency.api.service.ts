@@ -6,6 +6,7 @@ import { environment } from 'environments/environment';
   providedIn: 'root'
 })
 export class CurrencyApiService {
+  private currencyData = '../../../assets/DATA_MOCK.json';
   baseUrl = environment.apiUrl
   constructor(private httpClient: HttpClient) {}
 
@@ -14,5 +15,9 @@ export class CurrencyApiService {
         .set('access_key', environment.accessKey)
     const url = `${this.baseUrl}/symbols`
     return this.httpClient.get(url , {params})
+   }
+
+   getHistoricalRates() {
+    return this.httpClient.get(this.currencyData)
    }
 }
