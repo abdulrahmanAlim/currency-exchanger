@@ -11,7 +11,7 @@ export class CurrencyApiService {
   constructor(private httpClient: HttpClient) {}
 
    getCurrencyNames() {
-    let params = new HttpParams()
+    const params = new HttpParams()
         .set('access_key', environment.accessKey)
     const url = `${this.baseUrl}/symbols`
     return this.httpClient.get(url , {params})

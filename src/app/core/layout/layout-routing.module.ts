@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 
-let standardRoutes: Routes = [
+const standardRoutes: Routes = [
   {
     path: '',
     component: LayoutPageComponent,

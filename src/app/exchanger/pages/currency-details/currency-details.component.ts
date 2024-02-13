@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConverterItem } from '@exchanger/models/converter-item';
 import { CurrencyItem } from '@exchanger/models/currency';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './currency-details.component.html',
   styleUrl: './currency-details.component.scss'
 })
-export class CurrencyDetailsComponent{
+export class CurrencyDetailsComponent implements OnInit{
   amount: number = 0
   currenciesValues: string[] = []
   queryParams: string = '';
@@ -45,6 +45,7 @@ export class CurrencyDetailsComponent{
 
 
   ngOnInit(){
+
     this.converterItemSubscription = this.converterService.converterItem.subscribe(item => {
       this.converterItem= {...item}
      })
@@ -52,7 +53,6 @@ export class CurrencyDetailsComponent{
     this.routingSubscription = this.route.params.subscribe(params => {
       this.queryParams = params['type'];
       this.currencyItem  = this.currencyService.getCurrencyName(this.queryParams)
-
       if(this.currencyItem.firstCurrencyCode  && this.currencyItem.secondCurrencyCode) {
         this.converterItem.from = this.currencyItem.firstCurrencyCode
         this.converterItem.to = this.currencyItem.secondCurrencyCode
@@ -61,26 +61,12 @@ export class CurrencyDetailsComponent{
       }
 
    });
-
-   if(!localStorage.getItem('currencyNames')) {
-    this.getCurrencyNames()
-   }
-   this.getCurrencyHistoricalRates()
    this.currenciesList =  this.converterService.currenciesList ? JSON.parse(this.converterService.currenciesList) : null
   }
 
-  getCurrencyNames() {
-    this.currencyApiService.getCurrencyNames().subscribe((response:any) => {
-      localStorage.setItem("currencyNames", JSON.stringify(response['symbols']))
-      this.currencyItem  = this.currencyService.getCurrencyName(this.queryParams)
-    })
-  }
 
-  getCurrencyHistoricalRates() {
-    this.currencyApiService.getHistoricalRates().subscribe((response:any) => {
-      localStorage.setItem("data", JSON.stringify(response))
-    })
-  }
+
+
 
   onConvert(event:ConverterItem) {
     this.amount = this.converterService.calculateAmount(event)
@@ -90,7 +76,7 @@ export class CurrencyDetailsComponent{
     this.router.navigate(['/']);
   }
 
-  onUpdate(status: boolean) {
+  onUpdate() {
     this.currencyItem  = this.currencyService.getCurrencyName(this.converterItem.from)
   }
 

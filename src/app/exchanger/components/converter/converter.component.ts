@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChange } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConverterItem } from '@exchanger/models/converter-item';
 import { ConverterService } from '@exchanger/services/converter.service';
@@ -6,6 +6,7 @@ import { SelectDropdownComponent } from '../select-dropdown/select-dropdown.comp
 import {  Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NumberFormattingPipe } from '@exchanger/pipes/number-formatting.pipe';
+import { Value } from '@exchanger/models/currency';
 
 @Component({
   selector: 'app-converter',
@@ -16,7 +17,7 @@ import { NumberFormattingPipe } from '@exchanger/pipes/number-formatting.pipe';
 })
 export class ConverterComponent implements OnInit {
   @Output()  convertEmitter = new EventEmitter<ConverterItem>()
-  @Output()  onUpdateEmitter = new EventEmitter<boolean>(false)
+  @Output()  updateEmitter = new EventEmitter<boolean>(false)
   @Input() converterItem :ConverterItem = {
     amount: 0,
     convertedAmount: 0,
@@ -28,7 +29,7 @@ export class ConverterComponent implements OnInit {
   @Input() isDetailsPage: boolean = false
 
   amount:number = 0
-  values: any = {
+  values: Value = {
     fromValue:1,
     toValue:0
   }
@@ -50,7 +51,7 @@ export class ConverterComponent implements OnInit {
       this.converterItem.to = updatedValues.value
     }
     this.converter.updateRates(this.converterItem)
-    this.onUpdateEmitter.emit(true)
+    this.updateEmitter.emit(true)
   }
 
   onSelectItem(currency: string , type: string) {

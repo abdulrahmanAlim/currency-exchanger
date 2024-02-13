@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConverterItem } from '@exchanger/models/converter-item';
 import { CurrencyItem } from '@exchanger/models/currency';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +27,7 @@ export class CurrencyService {
    }
 
    getCurrencyName(symbol:string) {
-    let currencyItem: CurrencyItem = {}
+    const currencyItem: CurrencyItem = {}
     if(symbol.length > 3) {
       currencyItem.firstCurrencyCode = symbol.substring(0, 3)
       currencyItem.secondCurrencyCode = symbol.substring(3, 6)
@@ -60,9 +58,9 @@ export class CurrencyService {
    }
 
    mapData(currencyItem:CurrencyItem) {
-    let chartObject = {
-      labels: [] as any[],
-      data: [] as any[]
+    const chartObject = {
+      labels: [] as string[],
+      data: [] as string[]
     }
       this.currencyRatesHistoricalData[`${currencyItem.firstCurrencyCode}${currencyItem.secondCurrencyCode}`].forEach((data:any) => {
         chartObject.labels.push(data.date);

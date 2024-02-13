@@ -1,3 +1,9 @@
-<select class="form-select" (change)="onChange($event , type)">
-  <option [disabled]="disabled" *ngFor="let item of items" [value]="item" [selected]="item === selectedValue">{{ item }}</option>
+<select class="form-select" (change)="onChange($event, type)">
+  <option
+    [disabled]="disabled"
+    *ngFor="let item of items"
+    [value]="item"
+    [selected]="item === selectedValue">
+    {{ item }}
+  </option>
 </select>

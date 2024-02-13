@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConverterItem } from '@exchanger/models/converter-item';
+import { CurrencyValue } from '@exchanger/models/currency';
 import { ConverterApiService } from '@exchanger/services/converter.api.service';
 import { ConverterService } from '@exchanger/services/converter.service';
-import { LogoComponent } from 'app/core/layout/components/header/components/logo/logo.component';
+import { CurrencyApiService } from '@exchanger/services/currency.api.service';
 
 @Component({
   selector: 'app-currency-exchanger',
@@ -19,9 +20,14 @@ export class CurrencyExchangerComponent implements OnInit {
     toRate: 0
   }
   currenciesList = []
-  currenciesValues: any[] = []
-  constructor(private converterApiService: ConverterApiService , private converterService: ConverterService) {}
+  currenciesValues: CurrencyValue[] = []
+  constructor(private converterApiService: ConverterApiService , private converterService: ConverterService ,private  currencyApiService: CurrencyApiService) {}
   ngOnInit(): void {
+
+    if(!localStorage.getItem('currencyNames')) {
+      this.getCurrencyNames()
+     }
+
     if(!localStorage.getItem('rates')) {
       this.getLatestRates()
     } else {
@@ -29,6 +35,19 @@ export class CurrencyExchangerComponent implements OnInit {
     }
     this.converterService.converterItem.subscribe(item => {
       this.converterItem = item
+    })
+    this.getCurrencyHistoricalRates()
+  }
+
+  getCurrencyHistoricalRates() {
+    this.currencyApiService.getHistoricalRates().subscribe((response:any) => {
+      localStorage.setItem("data", JSON.stringify(response))
+    })
+  }
+
+  getCurrencyNames() {
+    this.currencyApiService.getCurrencyNames().subscribe((response:any) => {
+      localStorage.setItem("currencyNames", JSON.stringify(response['symbols']))
     })
   }
 

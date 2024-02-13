@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConverterItem } from '@exchanger/models/converter-item';
 
@@ -10,9 +10,9 @@ import { ConverterItem } from '@exchanger/models/converter-item';
   templateUrl: './select-dropdown.component.html',
   styleUrl: './select-dropdown.component.scss'
 })
-export class SelectDropdownComponent {
-  @Input() items: any
-  @Input() type: any
+export class SelectDropdownComponent implements OnChanges {
+  @Input() items: unknown
+  @Input() type: string = ''
   @Input() disabled: boolean = false
   @Input() defaultValues: ConverterItem = {
     amount: 0,
@@ -25,9 +25,6 @@ export class SelectDropdownComponent {
   @Output() selectedItem = new EventEmitter<any>();
   @Output() updatedValues = new EventEmitter<any>();
   selectedValue: string = '';
-
-  ngOnInit() {
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('defaultValues' in changes) {

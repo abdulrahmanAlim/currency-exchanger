@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Chart, { ChartConfiguration, ChartType } from 'chart.js/auto';
 
@@ -9,7 +9,7 @@ import Chart, { ChartConfiguration, ChartType } from 'chart.js/auto';
   templateUrl: './dynamic-chart.component.html',
   styleUrl: './dynamic-chart.component.scss',
 })
-export class DynamicChartComponent {
+export class DynamicChartComponent implements OnInit, OnChanges {
   @ViewChild('chart', { static: true }) private chartElementRef!: ElementRef;
   @Input() data:any;
   @Input() chartType!:ChartType;
@@ -31,8 +31,8 @@ export class DynamicChartComponent {
   }
 
   initChart() {
-    let context = this.chartElementRef.nativeElement;
-    let chartData: ChartConfiguration = {
+    const context = this.chartElementRef.nativeElement;
+    const chartData: ChartConfiguration = {
       type: this.chartType,
       data: this.data,
       options: {

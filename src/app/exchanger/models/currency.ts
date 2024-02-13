@@ -6,3 +6,15 @@ export interface CurrencyItem {
   firstCurrencyCode?:string,
   secondCurrencyCode?:string,
 }
+
+export interface CurrencyValue {
+  currency?:string ,
+  value?:number,
+}
+
+export interface Value {
+    fromValue:number,
+    toValue:number
+}
+
+

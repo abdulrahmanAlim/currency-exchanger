@@ -2,35 +2,60 @@
   <div class="container">
     <div class="row gap-30">
       <!-- Left section -->
-      <div  class="col-1">
+      <div class="col-1">
         <div class="column">
           <label>Amount</label>
-          <input class="input" type="number" [(ngModel)]="converterItem.amount">
-          <div class="info-small align-center">{{converterItem.fromRate| numberFormatting}} {{converterItem.from}} = {{converterItem.toRate | numberFormatting}} {{converterItem.to}}</div>
+          <input
+            class="input"
+            type="number"
+            [(ngModel)]="converterItem.amount" />
+          <div class="info-small align-center">
+            {{ converterItem.fromRate | numberFormatting }}
+            {{ converterItem.from }} =
+            {{ converterItem.toRate | numberFormatting }} {{ converterItem.to }}
+          </div>
         </div>
       </div>
-     <!-- Right section -->
-      <div  class="col-2">
+      <!-- Right section -->
+      <div class="col-2">
         <div class="row space-between">
           <div class="column">
             <label>From</label>
-            <app-select-dropdown [disabled]="isDetailsPage" type="from" [items]="currenciesList" [defaultValues]="converterItem" (updatedValues)="onUpdateSelection($event)" (selectedItem)="onSelectItem($event , 'from')"></app-select-dropdown>
+            <app-select-dropdown
+              [disabled]="isDetailsPage"
+              type="from"
+              [items]="currenciesList"
+              [defaultValues]="converterItem"
+              (updatedValues)="onUpdateSelection($event)"
+              (selectedItem)="
+                onSelectItem($event, 'from')
+              "></app-select-dropdown>
           </div>
-          <button *ngIf="!isDetailsPage" class="btn" (click)="swapCurrencies()">Swap</button>
+          <button *ngIf="!isDetailsPage" class="btn" (click)="swapCurrencies()">
+            Swap
+          </button>
           <div class="column">
             <label>To</label>
-            <app-select-dropdown type="to" [items]="currenciesList" [defaultValues]="converterItem" (updatedValues)="onUpdateSelection($event)" (selectedItem)="onSelectItem($event , 'to')"></app-select-dropdown>
+            <app-select-dropdown
+              type="to"
+              [items]="currenciesList"
+              [defaultValues]="converterItem"
+              (updatedValues)="onUpdateSelection($event)"
+              (selectedItem)="onSelectItem($event, 'to')"></app-select-dropdown>
           </div>
         </div>
         <div class="row space-around t-20">
-          <button class="btn btn-primary" (click)="convert()" >Convert</button>
+          <button class="btn btn-primary" (click)="convert()">Convert</button>
         </div>
         <div class="row t-20 gap-10 align-center">
           <div class="col-4">
-            <div class="info-large">{{converterItem.convertedAmount | numberFormatting}} {{converterItem.to}}</div>
+            <div class="info-large">
+              {{ converterItem.convertedAmount | numberFormatting }}
+              {{ converterItem.to }}
+            </div>
           </div>
           <div *ngIf="!isDetailsPage" class="col-1">
-            <button class="btn btn-primary" (click)="route()" >Details</button>
+            <button class="btn btn-primary" (click)="route()">Details</button>
           </div>
         </div>
       </div>

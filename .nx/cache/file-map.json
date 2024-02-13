@@ -1,0 +1,376 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "@angular/animations": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "chart.js": "^4.4.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2",
+    "@angular-devkit/build-angular": "^17.0.7",
+    "@angular-eslint/builder": "17.2.1",
+    "@angular-eslint/eslint-plugin": "17.2.1",
+    "@angular-eslint/eslint-plugin-template": "17.2.1",
+    "@angular-eslint/schematics": "17.2.1",
+    "@angular-eslint/template-parser": "17.2.1",
+    "@angular/cli": "^17.0.7",
+    "@angular/compiler-cli": "^17.0.0",
+    "@types/jasmine": "~5.1.0",
+    "@typescript-eslint/eslint-plugin": "6.19.0",
+    "@typescript-eslint/parser": "6.19.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "^3.2.5",
+    "prettier-eslint": "^16.3.0",
+    "typescript": "~5.2.2"
+  },
+  "pathMappings": {
+    "@exchanger/*": [
+      "app/exchanger/*"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "10837904549736760013"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "13044518069027839699"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "6913008859161776250"
+      },
+      {
+        "file": ".prettierrc.json",
+        "hash": "9838768024777231853"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "5331566439708925252"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "17038929134016848735"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "5336636969995539451"
+      },
+      {
+        "file": "README.md",
+        "hash": "1961057840043139595"
+      },
+      {
+        "file": "angular.json",
+        "hash": "9399884249210484498"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "17026197612236297969"
+      },
+      {
+        "file": "package.json",
+        "hash": "6555678887420985134"
+      },
+      {
+        "file": "src/app/app-routing.module.ts",
+        "hash": "14236889391108081244"
+      },
+      {
+        "file": "src/app/app.component.html",
+        "hash": "17816966185630879015"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "14847236816290759771"
+      },
+      {
+        "file": "src/app/app.module.ts",
+        "hash": "6146066288974335235"
+      },
+      {
+        "file": "src/app/core/interceptors/interceptor.ts",
+        "hash": "14296509684038678198"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/header/header.component.html",
+        "hash": "6334814241822633867"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/header/header.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/header/header.component.ts",
+        "hash": "10742696314908998416"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/logo/logo.component.html",
+        "hash": "11450532338377804527"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/logo/logo.component.scss",
+        "hash": "6289459184801479652"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/logo/logo.component.ts",
+        "hash": "12218051626523204767"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/main-header/main-header.component.html",
+        "hash": "18051016279469353496"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/main-header/main-header.component.scss",
+        "hash": "15443394464887927500"
+      },
+      {
+        "file": "src/app/core/layout/components/header/components/main-header/main-header.component.ts",
+        "hash": "11162910279441692378"
+      },
+      {
+        "file": "src/app/core/layout/components/loader/loader.component.html",
+        "hash": "4925022836724137882"
+      },
+      {
+        "file": "src/app/core/layout/components/loader/loader.component.scss",
+        "hash": "15986158907327831979"
+      },
+      {
+        "file": "src/app/core/layout/components/loader/loader.component.ts",
+        "hash": "11585905738729450142"
+      },
+      {
+        "file": "src/app/core/layout/components/main-content/main-content.component.html",
+        "hash": "17385897758380840601"
+      },
+      {
+        "file": "src/app/core/layout/components/main-content/main-content.component.scss",
+        "hash": "13164401685739756254"
+      },
+      {
+        "file": "src/app/core/layout/components/main-content/main-content.component.ts",
+        "hash": "16506037891087062997"
+      },
+      {
+        "file": "src/app/core/layout/layout-routing.module.ts",
+        "hash": "12194863024318778385"
+      },
+      {
+        "file": "src/app/core/layout/layout.module.ts",
+        "hash": "8152960509529943071"
+      },
+      {
+        "file": "src/app/core/layout/models/main-header.ts",
+        "hash": "5371712737161158039"
+      },
+      {
+        "file": "src/app/core/layout/pages/layout-page/layout-page.component.html",
+        "hash": "5666218362303963277"
+      },
+      {
+        "file": "src/app/core/layout/pages/layout-page/layout-page.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/core/layout/pages/layout-page/layout-page.component.ts",
+        "hash": "16118193882112542768"
+      },
+      {
+        "file": "src/app/core/layout/services/loader.service.ts",
+        "hash": "14676165886243382865"
+      },
+      {
+        "file": "src/app/core/layout/services/main-header.utils.service.ts",
+        "hash": "12712912288594219184"
+      },
+      {
+        "file": "src/app/core/services/loader.service.ts",
+        "hash": "14676165886243382865"
+      },
+      {
+        "file": "src/app/exchanger/components/converter/converter.component.html",
+        "hash": "4193419503179182844"
+      },
+      {
+        "file": "src/app/exchanger/components/converter/converter.component.scss",
+        "hash": "7889463435151859967"
+      },
+      {
+        "file": "src/app/exchanger/components/converter/converter.component.ts",
+        "hash": "12495884683237319707"
+      },
+      {
+        "file": "src/app/exchanger/components/dynamic-chart/dynamic-chart.component.html",
+        "hash": "11501649987421260399"
+      },
+      {
+        "file": "src/app/exchanger/components/dynamic-chart/dynamic-chart.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/exchanger/components/dynamic-chart/dynamic-chart.component.ts",
+        "hash": "6675417753756589550"
+      },
+      {
+        "file": "src/app/exchanger/components/select-dropdown/select-dropdown.component.html",
+        "hash": "7983563652875665698"
+      },
+      {
+        "file": "src/app/exchanger/components/select-dropdown/select-dropdown.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/exchanger/components/select-dropdown/select-dropdown.component.ts",
+        "hash": "5083592616494552471"
+      },
+      {
+        "file": "src/app/exchanger/exchanger-routing.module.ts",
+        "hash": "16497520016457874082"
+      },
+      {
+        "file": "src/app/exchanger/exchanger.module.ts",
+        "hash": "14232700220163517651"
+      },
+      {
+        "file": "src/app/exchanger/models/converter-item.ts",
+        "hash": "8216756688035840838"
+      },
+      {
+        "file": "src/app/exchanger/models/currency.ts",
+        "hash": "18024382278341048089"
+      },
+      {
+        "file": "src/app/exchanger/pages/currency-details/currency-details.component.html",
+        "hash": "4024744719225949649"
+      },
+      {
+        "file": "src/app/exchanger/pages/currency-details/currency-details.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/exchanger/pages/currency-details/currency-details.component.ts",
+        "hash": "5063931912857894213"
+      },
+      {
+        "file": "src/app/exchanger/pages/currency-exchanger/currency-exchanger.component.html",
+        "hash": "10487346552260155001"
+      },
+      {
+        "file": "src/app/exchanger/pages/currency-exchanger/currency-exchanger.component.scss",
+        "hash": "10793154575268925425"
+      },
+      {
+        "file": "src/app/exchanger/pages/currency-exchanger/currency-exchanger.component.ts",
+        "hash": "15882749988626960485"
+      },
+      {
+        "file": "src/app/exchanger/pages/exchanger-container/exchanger-container.component.html",
+        "hash": "17385897758380840601"
+      },
+      {
+        "file": "src/app/exchanger/pages/exchanger-container/exchanger-container.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/exchanger/pages/exchanger-container/exchanger-container.component.ts",
+        "hash": "12220035302804256968"
+      },
+      {
+        "file": "src/app/exchanger/pipes/number-formatting.pipe.ts",
+        "hash": "9101540894139294195"
+      },
+      {
+        "file": "src/app/exchanger/services/converter.api.service.ts",
+        "hash": "3755331790162296005"
+      },
+      {
+        "file": "src/app/exchanger/services/converter.service.ts",
+        "hash": "13323476988325637023"
+      },
+      {
+        "file": "src/app/exchanger/services/currency.api.service.ts",
+        "hash": "4006308342068964061"
+      },
+      {
+        "file": "src/app/exchanger/services/currency.service.ts",
+        "hash": "1931306345156470755"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/assets/DATA_MOCK.json",
+        "hash": "11744341983398140513"
+      },
+      {
+        "file": "src/assets/colors.scss",
+        "hash": "1379000592459943645"
+      },
+      {
+        "file": "src/assets/images/logo.png",
+        "hash": "4073162230976763084"
+      },
+      {
+        "file": "src/environments/environment.prod.ts",
+        "hash": "11978049407847530969"
+      },
+      {
+        "file": "src/environments/environment.ts",
+        "hash": "1448596581911203519"
+      },
+      {
+        "file": "src/favicon.ico",
+        "hash": "3988961587069885523"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "10416841348253697934"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "12246588107753938993"
+      },
+      {
+        "file": "src/styles.scss",
+        "hash": "1422321506346373210"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "17337579397915052279"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "9382882059389428351"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "15575553540147145788"
+      }
+    ]
+  }
+}
