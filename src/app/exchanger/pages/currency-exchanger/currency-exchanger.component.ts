@@ -18,11 +18,14 @@ export class CurrencyExchangerComponent implements OnInit {
     fromRate: 0,
     toRate: 0
   }
+  currenciesList = []
   currenciesValues: any[] = []
   constructor(private converterApiService: ConverterApiService , private converterService: ConverterService) {}
   ngOnInit(): void {
     if(!localStorage.getItem('rates')) {
       this.getLatestRates()
+    } else {
+      this.currenciesList =  this.converterService.currenciesList ? JSON.parse(this.converterService.currenciesList) : null
     }
     this.converterService.converterItem.subscribe(item => {
       this.converterItem = item
@@ -30,9 +33,10 @@ export class CurrencyExchangerComponent implements OnInit {
   }
 
   getLatestRates() {
-    this.converterApiService.latestRates().subscribe((response:any) => {
+    this.converterApiService.latestRates(this.converterItem.from).subscribe((response:any) => {
       localStorage.setItem("rates", JSON.stringify(response['rates']))
       localStorage.setItem("currencies", JSON.stringify(Object.keys(response['rates'])))
+      this.currenciesList =  this.converterService.currenciesList ? JSON.parse(this.converterService.currenciesList) : null
     })
   }
 

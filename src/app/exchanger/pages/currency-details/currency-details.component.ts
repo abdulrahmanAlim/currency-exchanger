@@ -34,7 +34,7 @@ export class CurrencyDetailsComponent{
 
   routingSubscription = new Subscription;
   converterItemSubscription = new Subscription;
-
+  currenciesList= []
   constructor(
     private converterService: ConverterService ,
     private currencyApiService :CurrencyApiService ,
@@ -66,12 +66,13 @@ export class CurrencyDetailsComponent{
     this.getCurrencyNames()
    }
    this.getCurrencyHistoricalRates()
-
+   this.currenciesList =  this.converterService.currenciesList ? JSON.parse(this.converterService.currenciesList) : null
   }
 
   getCurrencyNames() {
     this.currencyApiService.getCurrencyNames().subscribe((response:any) => {
       localStorage.setItem("currencyNames", JSON.stringify(response['symbols']))
+      this.currencyItem  = this.currencyService.getCurrencyName(this.queryParams)
     })
   }
 

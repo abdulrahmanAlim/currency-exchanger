@@ -11,12 +11,11 @@ export class ConverterApiService {
 
    }
 
-   latestRates(){
+   latestRates(baseCurrency:string){
     let params = new HttpParams()
     .set('access_key', environment.accessKey)
-    .set('base', environment.defaultCurrency)
-    const url = `${this.baseUrl}/latest?access_key=${environment.accessKey}
-    &base=${environment.defaultCurrency}`
+    .set('base', baseCurrency )
+    const url = `${this.baseUrl}/latest`
     return this.httpClient.get(url, {params})
    }
 }

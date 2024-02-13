@@ -33,7 +33,7 @@ export class ConverterComponent implements OnInit {
     toValue:0
   }
 
-  currenciesList
+  @Input() currenciesList = []
   constructor(private converter: ConverterService ,private router:Router) {
     this.currenciesList =  converter.currenciesList ? JSON.parse(converter.currenciesList) : null
   }
